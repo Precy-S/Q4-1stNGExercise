@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Sets a basic route
 
 // Render the initial page with the number input form
-app.post("/", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
 });
 app.get("/draw", (req, res) => {
@@ -36,5 +36,5 @@ app.post("/draw", (req, res) => {
 
 
 //Makes the app listen to port 3000
-const port = 3000;
+//const port = 3000;
 app.listen(port, () => console.log(`App listening to port ${port}`));
