@@ -18,8 +18,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Sets a basic route
 
 // Render the initial page with the number input form
-app.get("/", (req, res) => {
-  res.render('/draw.hbs', {formData});
+app.post("/", (req, res) => {
+  res.render("index");
+});
+app.get("/draw", (req, res) => {
+  let sideLength = req.query.sideLength
+  res.render("draw", {sideLength});
+});
+app.post("/draw", (req, res) => {
+  let sideLength = req.body.sideLength
+  res.render("draw", {sideLength});
 });
 
 // Create express route binder for draw.hbs and get the data from the url as parameters
@@ -28,4 +36,5 @@ app.get("/", (req, res) => {
 
 
 //Makes the app listen to port 3000
+const port = 3000;
 app.listen(port, () => console.log(`App listening to port ${port}`));
